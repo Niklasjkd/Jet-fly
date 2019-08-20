@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save
-    redirect_to new_user_registration_path
+    redirect_to user_path(@user)
   end
 
   def edit
@@ -37,6 +37,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @ser = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 end
