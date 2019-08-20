@@ -25,6 +25,9 @@ puts 'Creating 10 fake Users...'
 end
 
 puts 'Creating 15 fake Planes...'
+imageArr = ["private-jet1_quqsy5",
+"Private-Jet-Charter-Priority-One-Jets-e1464293444844_wyxjiq",
+"Challenger-604_sx9fsu"]
 
 15.times do
   plane = Plane.new(
@@ -32,7 +35,8 @@ puts 'Creating 15 fake Planes...'
     base_price: rand(500..5000),
     location:  "#{Faker::Address.city}",
     description:  "#{Faker::Vehicle.color}",
-    user_id: User.all.sample.id
+    user_id: User.all.sample.id,
+    image: imageArr.sample
   )
   plane.save!
 end
