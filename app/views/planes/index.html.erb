@@ -1,26 +1,19 @@
-
 <div class="container">
   <div class="card-deck">
     <% @planes.each do |plane| %>
       <div class="card" style="width: 18rem;">
         <%= link_to plane_path(plane, destination: params[:destination]) do %>
-
-        <img class="card-img-top" src="https://images.unsplash.com/photo-1551018154-87e31c03e566?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1604&q=80" alt="Card image cap">
+        <%= cl_image_tag(plane.image, crop: :fill, class: "card-img-top") %>
         <% end %>
-
         <div class="card-body">
           <h2 class="card-title">
             <%= plane.description %>
           </h2>
         </div>
-
         <div class="card-text">
           <p> <%= "Destination: #{plane.location}" %></p>
         </div>
-
     </div>
     <% end %>
   </div>
-
 </div>
-
