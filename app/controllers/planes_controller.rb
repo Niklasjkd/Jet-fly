@@ -1,6 +1,10 @@
 class PlanesController < ApplicationController
   def index
-    @planes = Plane.all
+    if params[:location].present?
+      @planes = Plane.where(location: params[:location])
+    else
+      @planes = Plane.all
+    end
   end
 
   def show
