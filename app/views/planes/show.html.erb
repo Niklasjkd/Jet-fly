@@ -12,14 +12,13 @@
     <div class="card bg-light col-md-4 p-0">
       <div class="card-header">Flight Info</div>
       <div class="card-body">
-        <h5 class="card-title"><%= @plane.location %> to <%=  params[:destination] %> </h5>
-        <p class="card-text">
-          flight duration: 2h <br><br>
-          charter cost: $<%= @plane.base_price%> + <br>
-          flight cost: $<%= @plane.price_per_min * 5.000 %> + <br>
-          total cost: $<%= @plane.price_per_min * 5.000 + @plane.base_price%><br>
-          <br>
-        </p>
+        <h5 class="card-title"><span id="plane_location"><%= @plane.location %></span> to
+          <span id="destination"><%=  params[:destination] %></span></h5>
+        <p class="card-text"> flight duration: <%= @flight_time_in_hours %> </p>
+
+        <p>charter cost: $<%= @plane.base_price%> + <br></p>
+        <p class="flight_price_label">flight cost: <%= @flight_cost %> <br></p>
+        <p class="total_price_label">total cost: <%= @total_cost %> <br></p>
       </div>
     </div>
   </div>
