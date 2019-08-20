@@ -30,7 +30,7 @@ germany_cities = ['Aach', 'Aachen', 'Aalen', 'Abenberg', 'Abensberg', 'Achern', 
   plane = Plane.new(
     price_per_min: rand(500..5000),
     base_price: rand(500..5000),
-    location:  germany_cities.sample,
+    location:  germany_cities.sample,git
     description:  "#{Faker::Vehicle.color}",
     user_id: rand(1..10)
   )
