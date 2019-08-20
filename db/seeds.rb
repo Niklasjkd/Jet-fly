@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Cleaning databases...'
-User.destroy_all
-Plane.destroy_all
-Booking.destroy_all
 Review.destroy_all
+Booking.destroy_all
+Plane.destroy_all
+User.destroy_all
 
 require 'faker'
 
@@ -34,16 +34,16 @@ imageArr = ["private-jet1_quqsy5",
     base_price: rand(500..5000),
     location:  "#{Faker::Address.city}",
     description:  "#{Faker::Vehicle.color}",
-    user_id: rand(1..10),
-    image: imageArr[rand(0..imageArr.size)]
+    user_id: User.all.sample.id,
+    image: imageArr.sample
   )
   plane.save!
 end
 
 20.times do
   booking = Booking.new(
-    user_id: rand(1..10),
-    plane_id: rand(1..15),
+    user_id: User.all.sample.id,
+    plane_id: Plane.all.sample.id,
     destination: "#{Faker::Address.city}",
     start_date: Faker::Date.forward(days: rand(2..30)),
     end_date: Faker::Date.forward(days: rand(30..50))
@@ -54,7 +54,7 @@ end
 30.times do
   review = Review.new(
     content: "#{Faker::Dessert.flavor}",
-    booking_id: rand(1..20)
+    booking_id: Booking.all.sample.id
   )
   review.save!
 end

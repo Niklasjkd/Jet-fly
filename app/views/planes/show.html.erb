@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row py-3 justify-content-between">
     <div class="card col-md-7 p-0">
-      <%= cl_image_tag("ckm3sqhwfzuwusyrgroh", crop: :fill, class: "card-img-top")  %>
+      <%= cl_image_tag(@plane.image, crop: :fill, class: "card-img-top")  %>
       <div class="card-body">
         <h5 class="card-title"> <%= @plane.description %> </h5>
         <p class="card-text">
