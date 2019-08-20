@@ -13,7 +13,7 @@ User.destroy_all
 
 require 'faker'
 
-puts 'Creating 100 fake restaurants...'
+puts 'Creating 10 fake Users...'
 
 10.times do
   user = User.new(
@@ -24,6 +24,7 @@ puts 'Creating 100 fake restaurants...'
   user.save!
 end
 
+puts 'Creating 15 fake Planes...'
 imageArr = ["private-jet1_quqsy5",
 "Private-Jet-Charter-Priority-One-Jets-e1464293444844_wyxjiq",
 "Challenger-604_sx9fsu"]
@@ -40,6 +41,8 @@ imageArr = ["private-jet1_quqsy5",
   plane.save!
 end
 
+puts 'Creating 20 fake Booking...'
+
 20.times do
   booking = Booking.new(
     user_id: User.all.sample.id,
@@ -50,6 +53,8 @@ end
   )
   booking.save!
 end
+
+puts 'Creating 30 fake Review...'
 
 30.times do
   review = Review.new(
