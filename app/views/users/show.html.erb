@@ -1,0 +1,7 @@
+<h1><%= @user.full_name %></h1>
+<h2><%= @user.email %></h2>
+<h2><%= @user.bookings %></h2>
+
+<%= link_to 'See all users', users_path %>
+<%= link_to 'Edit',  edit_user_registration_path(@user) %>
+<%= link_to 'Delete', user_path(@user), method: :delete %>
