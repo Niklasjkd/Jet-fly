@@ -1,28 +1,24 @@
 <div class="container">
-
   <div class="row py-3 justify-content-between">
-
     <div class="card col-md-7 p-0">
       <img src="https://www.priorityonejets.com/wp-content/uploads/2013/11/Midsize-Private-Jet-Charter-Hawker-800XP-e1446489556860.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"> <%= @plane.description %> </h5>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <p class="card-text">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </p>
       </div>
     </div>
-
-
     <div class="card bg-light col-md-4 p-0">
       <div class="card-header">Flight Info</div>
       <div class="card-body">
-        <h5 class="card-title">London to Munich</h5>
+        <h5 class="card-title"><%= @plane.location %> to <%=  params[:destination] %> </h5>
         <p class="card-text">
-          flight duration: 2h
-
-          charter cost:     $<%= @plane.base_price%> + <br>
-          flight cost:    $<%= @plane.price_per_min * 5.000 %> + <br>
-          total cost:     $<%= @plane.price_per_min * 5.000 + @plane.base_price%><br>
+          flight duration: 2h <br><br>
+          charter cost: $<%= @plane.base_price%> + <br>
+          flight cost: $<%= @plane.price_per_min * 5.000 %> + <br>
+          total cost: $<%= @plane.price_per_min * 5.000 + @plane.base_price%><br>
           <br>
-
         </p>
       </div>
     </div>
