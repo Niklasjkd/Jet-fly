@@ -33,10 +33,10 @@ images = ["private-jet1_quqsy5", "Private-Jet-Charter-Priority-One-Jets-e1464293
   plane = Plane.new(
     price_per_min: rand(500..5000),
     base_price: rand(500..5000),
-    location:  germany_cities.sample,git
+    location:  germany_cities.sample,
     description:  "#{Faker::Vehicle.color}",
     user_id: User.all.sample.id,
-    image: imageArr.sample
+    image: images.sample
   )
   plane.save!
 end
