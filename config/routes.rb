@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :planes, only: [ :index, :show ]
   resources :users, only: [ :index, :show, :destroy ]
+  resources :bookings, only: [:new, :create, :index, :destroy, :show]
+
 end

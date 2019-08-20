@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card-deck">
+    <%= @bookings.each do |booking| %>
+      <div class="card" style="width: 18rem;">
+
+          <div class="card-body">
+            <h2 class="card-title">
+              <%= booking.destination %>
+            </h2>
+
+            <%= link_to "Delete", booking_path(booking.id), method: :delete,  class: "btn btn-danger" %>
+          </div>
+          <div class="card-text">
+            <p></p>
+        </div>
+
+      </div>
+<% end %>
+
+    </div>
+
+  </div>
+
