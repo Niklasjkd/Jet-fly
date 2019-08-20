@@ -24,13 +24,18 @@ puts 'Creating 100 fake restaurants...'
   user.save!
 end
 
+imageArr = ["private-jet1_quqsy5",
+"Private-Jet-Charter-Priority-One-Jets-e1464293444844_wyxjiq",
+"Challenger-604_sx9fsu"]
+
 15.times do
   plane = Plane.new(
     price_per_min: rand(500..5000),
     base_price: rand(500..5000),
     location:  "#{Faker::Address.city}",
     description:  "#{Faker::Vehicle.color}",
-    user_id: rand(1..10)
+    user_id: rand(1..10),
+    image: imageArr[rand(0..imageArr.size)]
   )
   plane.save!
 end
