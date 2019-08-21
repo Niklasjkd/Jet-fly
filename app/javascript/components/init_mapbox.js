@@ -19,15 +19,13 @@ const addMarkersToMap = (map, markers) => {
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
-  console.log("§Hello1")
+
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
-
-    console.log("§Hello")
 
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
