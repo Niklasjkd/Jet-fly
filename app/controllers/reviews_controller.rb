@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :destroy]
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:new, :create, :index, :show, :destroy]
   before_action :find_plane, only: [:new, :create]
   before_action :find_booking, only: [:new, :create]
+
   def index
     @reviews = Review.all
   end

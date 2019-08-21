@@ -3,9 +3,11 @@ require 'open-uri'
 
 class PlanesController < ApplicationController
   before_action :set_user, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if params[:location].present?
-      @planes = Plane.where(location: params[:location])
+      @planes = Plane.where(location: params[:location].downcase)
     else
       @planes = Plane.all
     end
@@ -14,6 +16,11 @@ class PlanesController < ApplicationController
   def show
     @plane = Plane.find(params[:id])
     fetch_api(@plane.location, params[:destination])
+    @markers = [{
+      lat: @plane.lat,
+      lng: @plane.long,
+      infoWindow: render_to_string(partial: "info_window_map", locals: { name: @plane.location, place_type: "Origin" })
+    }]
   end
 
   private
