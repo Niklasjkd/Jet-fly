@@ -11,8 +11,6 @@ const initAutocomplete = () => {
   }
 };
 
-
-
 (function() {
   var placesAutocomplete = places({
     appId: 'UM97PT333Y',
@@ -28,7 +26,6 @@ const initAutocomplete = () => {
   placesAutocomplete.on('clear', function() {
     $address.textContent = 'none';
   });
-
-})();
+});
 
 export { initAutocomplete };
