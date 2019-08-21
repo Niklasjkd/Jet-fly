@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_user, only: [:new, :index, :show, :edit, :update, :destroy]
+  before_action :set_user, only: [:new, :create, :index, :show, :destroy]
 
   def index
     @bookings = Booking.where(user_id: @user.id)
@@ -22,15 +22,6 @@ class BookingsController < ApplicationController
       render :new
     end
   end
-
-
-  # def edit
-  # end
-
-  # def update
-  #   @user.update(user_params)
-  #   redirect_to edit_user_registration_path(@user)
-  # end
 
   def destroy
     @booking = Booking.find(params[:id])
