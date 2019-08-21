@@ -3,10 +3,11 @@ require 'open-uri'
 
 class PlanesController < ApplicationController
   before_action :set_user, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:location].present?
-      @planes = Plane.where(location: params[:location])
+      @planes = Plane.where(location: params[:location].downcase)
     else
       @planes = Plane.all
     end

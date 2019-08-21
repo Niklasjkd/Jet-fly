@@ -26,7 +26,13 @@
         <p class="flight_price_label">flight cost: <%= @flight_cost %> <br></p>
         <p class="total_price_label">total cost: <%= @total_cost %> <br></p>
         <br>
-        <%= link_to "Book", new_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
+        <% if user_signed_in? %>
+
+          <%= link_to "Book", new_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
+
+        <% else  %>
+          <%= link_to "LogIn and Book", new_user_session_path(destination: params[:destination], plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
+        <% end %>
       </div>
     </div>
   </div>
