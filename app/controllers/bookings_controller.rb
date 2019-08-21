@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_user, only: [:new, :index, :create, :show, :edit, :update, :destroy]
+  before_action :set_user, only: [:new, :index, :show, :edit, :update, :destroy]
 
   def index
     @bookings = Booking.where(user_id: @user.id)
