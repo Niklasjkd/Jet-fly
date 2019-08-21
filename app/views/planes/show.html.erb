@@ -29,7 +29,7 @@
 
         <% if user_signed_in? %>
 
-          <%= link_to "Book", new_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
+          <%= link_to "Book", new_plane_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
 
         <% else  %>
           <%= link_to "LogIn and Book", new_user_session_path(destination: params[:destination], plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
