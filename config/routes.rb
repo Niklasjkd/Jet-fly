@@ -5,5 +5,4 @@ Rails.application.routes.draw do
   resources :planes, only: [ :index, :show ]
   resources :users, only: [ :index, :show, :destroy ]
   resources :bookings, only: [:new, :create, :index, :destroy, :show]
-
 end

@@ -22,11 +22,11 @@
         <h5 class="card-title"><span id="plane_location"><%= @plane.location %></span> to
           <span id="destination"><%=  params[:destination] %></span></h5>
           <p class="card-text"> flight duration: <%= @flight_time_in_hours %> </p>
-
-          <p>charter cost: $<%= @plane.base_price%> + <br></p>
-          <p class="flight_price_label">flight cost: <%= @flight_cost %> <br></p>
-          <p class="total_price_label">total cost: <%= @total_cost %> <br></p>
-        </div>
+        <p>charter cost: $<%= @plane.base_price%> + <br></p>
+        <p class="flight_price_label">flight cost: <%= @flight_cost %> <br></p>
+        <p class="total_price_label">total cost: <%= @total_cost %> <br></p>
+        <br>
+        <%= link_to "Book", new_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
       </div>
     </div>
   </div>
