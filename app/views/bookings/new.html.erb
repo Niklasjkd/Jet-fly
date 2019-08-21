@@ -6,7 +6,7 @@
         <h5 class="card-title"><%= params[:location] %> to <%=  params[:destination] %> </h5>
         <p class="card-text">
 
-          <%= link_to "Confirm", bookings_path(destination: params[:destination], user_id: @user.id, plane_id: params[:plane_id]), method: :post,  class: "btn btn-danger" %>
+          <%= link_to "Confirm", plane_bookings_path(destination: params[:destination], user_id: params[:user_id], plane_id: params[:plane_id]), method: :post,  class: "btn btn-danger" %>
         </p>
       </div>
     </div>
