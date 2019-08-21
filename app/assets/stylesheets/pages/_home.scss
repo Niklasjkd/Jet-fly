@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 
 body {
-  background-image: url("plane.jpg");
+  //background-image:  url('<%= cl_image_path plane_y6h40q %>');//url("plane.jpg");
   background-size: cover;
 }
 

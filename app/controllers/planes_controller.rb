@@ -21,6 +21,8 @@ class PlanesController < ApplicationController
       lng: @plane.long,
       infoWindow: render_to_string(partial: "info_window_map", locals: { name: @plane.location, place_type: "Origin" })
     }]
+
+    p @markers
   end
 
   private
