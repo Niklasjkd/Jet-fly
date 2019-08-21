@@ -8,7 +8,8 @@
             <h2 class="card-title">
               <%= booking.destination %>
             </h2>
-            <%= link_to "Delete", booking_path(booking.id), method: :delete,  class: "btn btn-danger" %>
+            <%= link_to "Delete", plane_booking_path(params[:plane_id], booking.id), method: :delete,  class: "btn btn-danger" %>
+            <%= link_to "Create a review", new_plane_booking_review_path(params[:plane_id], booking.id),  class: "btn btn-danger" %>
           </div>
           <div class="card-text">
             <p></p>

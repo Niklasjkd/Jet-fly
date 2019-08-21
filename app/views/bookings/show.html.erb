@@ -1,9 +1,9 @@
 <div class="card bg-light col-md-4 p-0">
       <div class="card-header">Your Bookings</div>
       <div class="card-body">
-        <h5 class="card-title">
-        <%= @booking.destination  %></h5>
+        <h5 class="card-title"><%= @booking.destination  %></h5>
 
         <%= link_to "Delete", bookings_path(@booking.id), method: :destroy,  class: "btn btn-danger" %>
+        <%= link_to "Create a review", new_review_path(@user),  class: "btn btn-danger" %>
       </div>
     </div>
