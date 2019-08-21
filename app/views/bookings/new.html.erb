@@ -1,0 +1,12 @@
+
+<h1>test</h1>
+<div class="card bg-light col-md-4 p-0">
+      <div class="card-header">Your Flight</div>
+      <div class="card-body">
+        <h5 class="card-title"><%= params[:location] %> to <%=  params[:destination] %> </h5>
+        <p class="card-text">
+
+          <%= link_to "Confirm", bookings_path(destination: params[:destination], user_id: @user.id, plane_id: params[:plane_id]), method: :post,  class: "btn btn-danger" %>
+        </p>
+      </div>
+    </div>
