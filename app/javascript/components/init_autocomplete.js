@@ -17,10 +17,10 @@ const initAutocomplete = () => {
   var placesAutocomplete = places({
     appId: 'UM97PT333Y',
     apiKey: 'b0410f10f8af91d8e14252dccbfe943d',
-    container: document.querySelector('#location')
+    container: document.getElementById('location')
   });
 
-  var $address = document.querySelector('#address-value')
+  var $address = document.getElementById('address-value')
   placesAutocomplete.on('change', function(e) {
     $address.textContent = e.suggestion.value
   });
