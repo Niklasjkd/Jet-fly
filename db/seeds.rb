@@ -19,7 +19,7 @@ puts 'Creating 10 fake Users...'
   user = User.new(
     email: "#{Faker::Internet.free_email}",
     full_name: "#{Faker::Name.name}",
-    password: "#{Faker::Invoice.creditor_reference}"
+    password: "123456"
   )
   user.save!
 end
