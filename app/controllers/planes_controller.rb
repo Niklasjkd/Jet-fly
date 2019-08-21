@@ -14,6 +14,11 @@ class PlanesController < ApplicationController
   def show
     @plane = Plane.find(params[:id])
     fetch_api(@plane.location, params[:destination])
+    @markers = [{
+      lat: @plane.lat,
+      lng: @plane.long,
+      infoWindow: render_to_string(partial: "info_window_map", locals: { name: @plane.location, place_type: "Origin" })
+    }]
   end
 
   private
