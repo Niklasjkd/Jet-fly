@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.booking = @booking
-    if @review.save!
+    if @review.save
       redirect_to plane_booking_reviews_path
     else
       render :new
