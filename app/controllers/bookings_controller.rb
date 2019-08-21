@@ -2,11 +2,12 @@ class BookingsController < ApplicationController
   before_action :set_user, only: [:new, :create, :index, :show, :destroy]
 
   def index
-    @bookings = Booking.where(user_id: @user.id)
+    @bookings = policy_scope(Booking).where(user_id: @user.id)
   end
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
@@ -22,15 +23,6 @@ class BookingsController < ApplicationController
       render :new
     end
   end
-
-
-  # def edit
-  # end
-
-  # def update
-  #   @user.update(user_params)
-  #   redirect_to edit_user_registration_path(@user)
-  # end
 
   def destroy
     @booking = Booking.find(params[:id])
