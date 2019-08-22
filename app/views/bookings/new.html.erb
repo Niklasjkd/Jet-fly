@@ -1,13 +1,11 @@
-
-<h1>test</h1>
-<div class="card bg-light col-md-4 p-0">
-      <div class="card-header">Your Flight</div>
-      <div class="card-body">
-        <h5 class="card-title"><%= params[:location] %> to <%=  params[:destination] %> on <%= params[:date] %> </h5>
-        <p class="card-text">
-
-
-          <%= link_to "Confirm", plane_bookings_path(destination: params[:destination], user_id: params[:user_id], plane_id: params[:plane_id], start_date: params[:date]), method: :post,  class: "btn btn-danger" %>
-        </p>
-      </div>
-    </div>
+<div class="container">
+  <div class="jumbotron mt-5 rounded" style="box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+    <h1 class="display-4">
+      <strong><%= params[:location].capitalize %></strong> to <strong> <%=  params[:destination].capitalize %> </strong> on <strong> <%= params[:date] %> </strong>
+    </h1>
+    <p class="lead">New Booking</p>
+    <hr class="my-4">
+    <p>Please look over your data and confirm it.</p>
+    <%= link_to "Confirm", plane_bookings_path(destination: params[:destination], user_id: params[:user_id], plane_id: params[:plane_id], start_date: params[:date]), method: :post,  class: "btn btn-primary btn-lg" %>
+  </div>
+</div>
