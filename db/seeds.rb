@@ -40,10 +40,10 @@ PLANE_DESCRIPTIONS = ["Global ", "Falcon 7X ", "Gulfstream G600 ", "Falcon 8X ",
     location:  GERMANY_CITIES.sample,
     description:  PLANE_DESCRIPTIONS.sample,
     user_id: User.all.sample.id,
-    image: PLANE_IMAGES.sample,
     lat: current_coordinates[:lat],
     long: current_coordinates[:long]
   )
+  plane.remote_image_url = "https://res.cloudinary.com/dzdqfcowf/image/upload/v1566307280/#{PLANE_IMAGES.sample}"
   plane.save!
 end
 
@@ -73,3 +73,7 @@ REVIEW_CONTENT = "For my summer trip 2019, I wanted to travel to a special place
 end
 
 puts 'Finished!'
+
+
+
+
