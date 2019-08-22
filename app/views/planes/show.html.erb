@@ -24,6 +24,7 @@
       <div class="mb-3 p-3 bg-white rounded border">
         <p><strong>Destination</strong></p>
         <p><small><%= @plane.location %> to <span id="destination"><%=  params[:destination] %></span></small></p>
+        <p><%= "Date: #{params[:date]}"  %></p>
       </div>
       <!-- make a card -->
       <div class="mb-3 p-3 bg-white rounded border">
@@ -39,10 +40,10 @@
       <!-- checkout -->
       <div class="bg-white border p-3 mt-3">
         <% if user_signed_in? %>
-        <%= link_to "Book", new_plane_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id]), method: :get,  class: "btn btn-danger w-100" %>
+        <%= link_to "Book", new_plane_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id], date: params[:date], location: @plane.location), method: :get,  class: "btn btn-danger w-100" %>
 
         <% else  %>
-        <%= link_to "Login and Book", new_user_session_path(destination: params[:destination], plane_id: params[:id]), method: :get,  class: "btn btn-danger w-100" %>
+        <%= link_to "Login and Book", new_user_session_path(destination: params[:destination], plane_id: params[:id], date: params[:date], location: @plane.location), method: :get,  class: "btn btn-danger w-100" %>
         <% end %>
 
         <div class="mt-3 d-flex justify-content-between">
