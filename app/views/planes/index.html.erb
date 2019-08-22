@@ -1,19 +1,16 @@
 <div class="container">
-
   <h1>Choose a Jet</h1>
-
   <div class="plane-deck">
     <% @planes.each do |plane| %>
-
-    <%= link_to plane_path(plane, destination: params[:destination], date: params[:date]) do %>
-    <div class="card plane mb-3" style="border: 0px; border-radius: 4px;">
-      <%= cl_image_tag(plane.image, crop: :fill, class: "w-100") %>
-      <div class="card-body w-100 text-body">
-        <h5 class="card-title"> <%= plane.description %> </h5>
-        <p class="card-text"><small class="text-muted"><%= plane.location %> to <%= params[:destination] %></small></p>
-      </div>
-    </div>
-    <% end %>
+      <%= link_to plane_path(plane, destination: params[:destination], date: params[:date]) do %>
+        <div class="card plane mb-3" style="border: 0px; border-radius: 4px;">
+          <%= cl_image_tag(plane.image, crop: :fill, class: "w-100") %>
+          <div class="card-body w-100 text-body">
+            <h5 class="card-title"> <%= plane.description %> </h5>
+            <p class="card-text"><small class="text-muted"><%= plane.location %> to <%= params[:destination] %></small></p>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

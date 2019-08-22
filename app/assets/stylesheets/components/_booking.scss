@@ -1,0 +1,25 @@
+.book-deck {
+    flex-grow: 1;
+  display: grid;
+  grid-gap: 16px;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .book-deck {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .book-deck {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 1200px) {
+  .book-deck {
+    grid-template-columns: 1fr 1fr;
+  }
+}
