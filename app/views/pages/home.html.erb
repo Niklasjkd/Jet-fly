@@ -1,8 +1,12 @@
+<style>
+body {
+   background-image: url('<%= cl_image_path 'plane_y6h40q', crop: :fill %>');
+}
+</style>
+
 <div class="container">
     <div class="container" id="form">
       <form action="" method="get">
-        <div class="container col-lg-12 row">
-          <div >
             <h2>Book flights on a private jet</h2>
           <%= form_with url: planes_path, method: :home,
             wrapper: :inline_form,
@@ -10,23 +14,24 @@
             wrapper_mappings: {
             boolean: :inline_boolean
             } do |form| %>
-            <div class="search-form-control form-group">
-              <div class="col-lg-3 col-md-3 col-sm-12 p-5">
-                  <%= form.text_field :location, placeholder: "From", class: "form-control search-slt" %>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-5">
-                  <%= form.text_field :destination, placeholder: "To", class: "form-control search-slt"%>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-5">
-                  <%= form.date_field :date, class: "form-control search-slt"%>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                  <%= form.submit "Find", class: "btn btn-danger", id: "button" %>
-              </div>
+            <div class="search-form-control form-group" >
+                <div class="col-lg-3 col-md-3 col-sm-12 p-5">
+                    <%= form.text_field :location, placeholder: "From", class: "form-control search-slt" %>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-5">
+                    <%= form.text_field :destination, placeholder: "To", class: "form-control search-slt"%>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-5">
+                    <%= form.date_field :date, class: "form-control search-slt"%>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                    <%= form.submit "Find", class: "btn btn-danger", id: "button" %>
+                </div>
             </div>
           <% end %>
       </form>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>
