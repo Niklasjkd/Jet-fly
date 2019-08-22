@@ -9,6 +9,6 @@ class PagesController < ApplicationController
 private
 
   def search_params
-    params.permit(:location, :destination, :date)
+    params.permit(:location, :destination, :departure_date)
   end
 end

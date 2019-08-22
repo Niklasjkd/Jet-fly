@@ -1,11 +1,17 @@
 <div class="container">
   <div class="jumbotron mt-5 rounded" style="box-shadow: 0 0 10px rgba(0,0,0,0.2);">
     <h1 class="display-4">
-      <strong><%= params[:location].capitalize %></strong> to <strong> <%=  params[:destination].capitalize %> </strong> on <strong> <%= params[:date] %> </strong>
+      <% unless params[:book][:departure_date].empty?%>
+      <% @date = params[:book][:departure_date] %>
+      <% else %>
+       <% @date = params[:book][:default_date] %>
+        <% end %>
+      <strong><%= params[:book][:location].capitalize %></strong> to <strong> <%=  params[:book][:destination].capitalize %> </strong> on <strong> <%= @date %> </strong>
+
     </h1>
     <p class="lead">New Booking</p>
     <hr class="my-4">
     <p>Please look over your data and confirm it.</p>
-    <%= link_to "Confirm", plane_bookings_path(destination: params[:destination], user_id: params[:user_id], plane_id: params[:plane_id], start_date: params[:date]), method: :post,  class: "btn btn-primary btn-lg" %>
+    <%= link_to "Confirm", plane_bookings_path(destination: params[:book][:destination], user_id: params[:book][:user_id], plane_id: params[:book][:plane_id], start_date: @date), method: :post,  class: "btn btn-primary btn-lg" %>
   </div>
 </div>
