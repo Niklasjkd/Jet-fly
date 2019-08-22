@@ -34,12 +34,16 @@ class PlanesController < ApplicationController
 
   def show
     @plane = Plane.find(params[:id])
-    fetch_api(@plane.location, params[:destination])
+    @destination = params[:destination]
+    fetch_api(@plane.location, @destination)
+    destination_marker = fetch_coordinates(@destination)
+    destination_marker[:infoWindow] = render_to_string(partial: "info_window_map", locals: { name: @destination, place_type: "Destination" })
+
     @markers = [{
       lat: @plane.lat,
       lng: @plane.long,
       infoWindow: render_to_string(partial: "info_window_map", locals: { name: @plane.location, place_type: "Origin" })
-    }]
+    }, destination_marker]
   end
 
   private
@@ -67,5 +71,15 @@ class PlanesController < ApplicationController
 
   def spaces_on(number, sep=" ")
     number.round(2).to_s.tap { |s| :go while s.gsub!(/^([^.]*)(\d)(?=(\d{3})+)/, "\\1\\2#{sep}") }
+  end
+
+  def fetch_coordinates(location)
+    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{location}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
+    data_serialized = open(url).read
+    data = JSON.parse(data_serialized)
+    {
+      lat: data["features"][0]["geometry"]["coordinates"][1],
+      lng: data["features"][0]["geometry"]["coordinates"][0]
+    }
   end
 end
