@@ -22,10 +22,12 @@ class PlanesController < ApplicationController
   def create
     @plane = Plane.new(plane_params)
     respond_to do |format|
-      if @plane.save!
+      if @plane.save
         format.html { redirect_to planes_path(owner: plane_params[:user_id]), notice: 'Plane was successfully created.' }
+        format.json { render :show, status: :created, location: @plane }
       else
-        render :new
+        format.html { render :new }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
       end
     end
   end
