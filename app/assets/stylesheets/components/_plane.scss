@@ -1,54 +1,48 @@
-.card-deck{
+.plane-deck{
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
-  padding: 16px;
-
 }
-.card {
+
+.plane {
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   text-decoration: none;
 
-  h2 {
-    color: black;
-  }
+  transition-property: background;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
 
   &:hover {
     box-shadow: 0 0 60px rgba(0,0,0,0.2);
     text-decoration: none;
     background-color: #abb1ba;
-    }
+  }
 
-  a img {
-    height: 150px;
-    width: 18rem;
+  img {
+    border-radius: 4px 4px 0px 0px;
+    height: 200px;
   }
 }
 
-
-
-
-
 @media (min-width: 100px) and (max-width: 575px) {
-  .card-deck {
+  .plane-deck {
     grid-template-columns: 1fr;
   }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  .card-deck {
+  .plane-deck {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 1200px) {
-  .card-deck {
+  .plane-deck {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
