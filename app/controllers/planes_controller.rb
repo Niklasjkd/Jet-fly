@@ -39,7 +39,7 @@ class PlanesController < ApplicationController
   private
 
   def plane_params
-    params.require(:plane).permit(:user_id, :price_per_min, :base_price, :location, :description, :image, :image_cache)
+    params.require(:plane).permit(:user_id, :price_per_min, :base_price, :location, :description, :image)
   end
 
   def fetch_api(origin, destination)
