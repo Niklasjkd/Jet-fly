@@ -22,9 +22,9 @@
     background-color: #abb1ba;
     }
 
-  a img {
-    height: 150px;
-    width: 18rem;
+  img {
+    border-radius: 4px 4px 0px 0px;
+    height: 200px;
   }
 }
 
@@ -37,13 +37,13 @@
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
   .plane-deck {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 1200px) {
   .plane-deck {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
