@@ -1,4 +1,5 @@
 <div class="container">
+
   <% unless @planes.sample %>
     <div class="container d-flex flex-column justify-content-center align-items-center col-9" style="margin-top: 150px; color: black;">
       <h1>Add a plane <%= @user.id %></h1>
@@ -15,21 +16,23 @@
     </div>
   <% end %>
 
-  <div class="card-deck">
+
+
+  <h1>Choose a Jet</h1>
+
+  <div class="plane-deck">
+
     <% @planes.each do |plane| %>
-      <div class="card" style="width: 18rem;">
-        <%= link_to plane_path(plane, destination: params[:destination], date: params[:date]) do %>
-        <%= cl_image_tag(plane.image, crop: :fill, class: "card-img-top") %>
-        <% end %>
-        <div class="card-body">
-          <h2 class="card-title">
-            <%= plane.description %>
-          </h2>
-        </div>
-        <div class="card-text">
-          <p> <%= "Origin: #{plane.location}" %></p>
-        </div>
+
+    <%= link_to plane_path(plane, destination: params[:destination], date: params[:date]) do %>
+    <div class="card plane mb-3" style="border: 0px; border-radius: 4px;">
+      <%= cl_image_tag(plane.image, crop: :fill, class: "w-100") %>
+      <div class="card-body w-100 text-body">
+        <h5 class="card-title"> <%= plane.description %> </h5>
+        <p class="card-text"><small class="text-muted"><%= plane.location %> to <%= params[:destination] %></small></p>
+      </div>
     </div>
+    <% end %>
     <% end %>
   </div>
 </div>

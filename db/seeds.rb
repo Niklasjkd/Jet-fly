@@ -28,7 +28,8 @@ puts 'Creating 15 fake Planes...'
 
 GERMANY_CITIES = ['berlin', 'hamburg', 'frankfurt']
 GERMANY_COORDINATES = [{ lat: 53.47472016849071, long: 10.057256187500002 }, { lat: 51.24790041004096, long: 8.563115562500002 }, { lat: 48.09247679053504, long: 11.507451500000002 }, { lat: 52.41556658882377, long: 13.397099937500002 }]
-PLANE_IMAGES = ["private-jet1_quqsy5", "Private-Jet-Charter-Priority-One-Jets-e1464293444844_wyxjiq", "Challenger-604_sx9fsu"]
+PLANE_IMAGES = ["private-jet1_quqsy5", "Private-Jet-Charter-Priority-One-Jets-e1464293444844_wyxjiq", "Challenger-604_sx9fsu", "photo-1522474252234-127492dde7f4_hr2a2a", "photo-1552181528-ff71ab6bbbc5_x9o2px", "photo-1530487621680-ebe8c8bf6c83_ues7js", "photo-1551018154-87e31c03e566_mq5dot", "photo-1540962351504-03099e0a754b_muslf5", "maxresdefault_heg67t", "dassault_fcyqby", "bbj2-ext_gg1ejn"]
+PLANE_DESCRIPTIONS = ["Global ", "Falcon 7X ", "Gulfstream G600 ", "Falcon 8X ", "Gulfstream G550 ", "Global 6000", "Gulfstream G650ER ", "Global 7500", "Bombardier Challenger 600", "Dassault Falcon 2000", "Dassault Falcon 900", "Embraer Legacy 600/650", "Bombardier Challenger 300/350", "Cessna Citation Sovereign", "Cessna Citation X", "Dassault Falcon 50", "Gulfstream G200/G250", "Hawker 4000"]
 
 15.times do
   current_coordinates = GERMANY_COORDINATES.sample
@@ -37,7 +38,7 @@ PLANE_IMAGES = ["private-jet1_quqsy5", "Private-Jet-Charter-Priority-One-Jets-e1
     price_per_min: rand(500..5000),
     base_price: rand(500..5000),
     location:  GERMANY_CITIES.sample,
-    description:  "#{Faker::Vehicle.color}",
+    description:  PLANE_DESCRIPTIONS.sample,
     user_id: User.all.sample.id,
     image: PLANE_IMAGES.sample,
     lat: current_coordinates[:lat],
@@ -61,9 +62,11 @@ end
 
 puts 'Creating 30 fake Review...'
 
+REVIEW_CONTENT = "For my summer trip 2019, I wanted to travel to a special place, a country that only few people know about and as I knew that WizzAir is offering cheap flights to Kutaisi, Georgia, I checked the price. The flights departing from Vienna were the most cheap ones, but when my companion received the confirmation of the holiday dates, the prices increased and travelling to Vienna by train and flight together were too expensive for us. Because of that, I checked other possibilities to travel to Georgia: Those were LOT, Baltic, Belavia, Lufthansa, Ukrainian and other. However, the schedueles were quite bad or my companion did not want to fly them (safety reasons). So I strated the search flights from other airports around my home town (MUC, PRG, NUE, SZG, LNZ)"
+
 30.times do
   review = Review.new(
-    content: "#{Faker::Dessert.flavor}",
+    content: REVIEW_CONTENT,
     booking_id: Booking.all.sample.id
   )
   review.save!

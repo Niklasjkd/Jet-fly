@@ -20,19 +20,26 @@
   <div class="row">
     <div class="col-8">
       <h2 class="text-secondary">Flight Info</h2>
-      <!-- make a card -->
       <div class="mb-3 p-3 bg-white rounded border">
         <p><strong>Destination</strong></p>
         <p><small><%= @plane.location %> to <span id="destination"><%=  params[:destination] %></span></small></p>
         <p><%= "Date: #{params[:date]}"  %></p>
       </div>
-      <!-- make a card -->
       <div class="mb-3 p-3 bg-white rounded border">
         <p><strong>Map</strong></p>
         <div id="map" style="width: 100%; height: 600px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         ></div>
+      </div>
+      <div class="mb-3 p-3 bg-white rounded border">
+        <p><strong>Reviews</strong></p>
+        <% @plane.bookings.each do |booking| %>
+          <% booking.reviews.each do |review| %>
+            <p class="m-0 text-muted"><%= review.booking.user.full_name %></p>
+            <p class="pl-4"> <%= review.content %> </p>
+          <% end %>
+        <% end %>
       </div>
       <!-- /menu -->
     </div>
