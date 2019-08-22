@@ -16,7 +16,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
-
+gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 
 group :development do
