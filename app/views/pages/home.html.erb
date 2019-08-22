@@ -1,7 +1,7 @@
 
 <style>
 body {
-   background-image: url('<%= cl_image_path 'plane_y6h40q', crop: :fill %>');
+  background-image: radial-gradient(circle, rgba(48,47,47,0.46682422969187676) 81%, rgba(179,179,179,0) 99%), url('<%= cl_image_path 'plane_y6h40q', crop: :fill %>');
 }
 .navbar {
   background: transparent;
@@ -14,7 +14,7 @@ body {
 <div class="container">
     <div class="container" id="form">
       <form action="" method="get">
-            <h2>Book flights on a private jet</h2>
+          <div class="ml-3"><h2>Book flights on a private jet</h2></div>
           <%= form_with url: planes_path, method: :home,
             wrapper: :inline_form,
             html: { class: "form-inline" },
@@ -22,16 +22,16 @@ body {
             boolean: :inline_boolean
             } do |form| %>
             <div class="search-form-control form-group" >
-                <div class="col-lg-3 col-md-3 col-sm-12 p-5">
+                <div class="col-lg-3 col-md-3 col-sm-12">
                     <%= form.text_field :location, placeholder: "From", class: "form-control search-slt" %>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 p-5">
+                <div class="col-lg-3 col-md-3 col-sm-12">
                     <%= form.text_field :destination, placeholder: "To", class: "form-control search-slt"%>
                 </div>
-                <div class= "col-lg-3 col-md-3 col-sm-12 p-5">
+                <div class= "col-lg-3 col-md-3 col-sm-12">
                   <%= form.text_field :departure_date, placeholder: "Departure", class: "datepicker form-control bg-white" %>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <div class="col-lg-3 col-md-3 col-sm-12">
                     <%= form.submit "Find", class: "btn btn-primary", id: "button" %>
                 </div>
               </div>
