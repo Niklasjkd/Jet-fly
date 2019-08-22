@@ -8,10 +8,7 @@
           <small class="text-muted">Last updated 3 mins ago</small>
         </p>
       </div>
-      <div
-      id="map"
-      style="width: 100%;
-      height: 600px;"
+      <div id="map" style="width: 100%; height: 600px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
@@ -22,19 +19,21 @@
         <h5 class="card-title"><span id="plane_location"><%= @plane.location %></span> to
           <span id="destination"><%=  params[:destination] %></span></h5>
           <p class="card-text"> flight duration: <%= @flight_time_in_hours %> </p>
-        <p>charter cost: $<%= @plane.base_price%> + <br></p>
-        <p class="flight_price_label">flight cost: <%= @flight_cost %> <br></p>
-        <p class="total_price_label">total cost: <%= @total_cost %> <br></p>
-        <br>
+          <p>charter cost: $<%= @plane.base_price%> + <br></p>
+          <p class="flight_price_label">flight cost: <%= @flight_cost %> <br></p>
+          <p class="total_price_label">total cost: <%= @total_cost %> <br></p>
+          <br>
 
-        <% if user_signed_in? %>
+          <% if user_signed_in? %>
 
           <%= link_to "Book", new_plane_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
 
-        <% else  %>
+          <% else  %>
           <%= link_to "LogIn and Book", new_user_session_path(destination: params[:destination], plane_id: params[:id]), method: :get,  class: "btn btn-danger" %>
-        <% end %>
+          <% end %>
 
+        </div>
       </div>
     </div>
   </div>
+</div>
