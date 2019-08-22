@@ -59,7 +59,13 @@ class PlanesController < ApplicationController
     # 0,15832 flight time in min for 1 kilometer
     @flight_time_in_min = distance_in_kilo * 0.15832
     @flight_time_in_hours = @flight_time_in_min / 60
-    @flight_cost = @flight_time_in_min * @plane.price_per_min
-    @total_cost = @flight_cost + @plane.base_price
+    @base_price = spaces_on(@plane.base_price)
+    @flight_cost_int = @flight_time_in_min * @plane.price_per_min
+    @flight_cost = spaces_on(@flight_cost_int)
+    @total_cost = spaces_on(@flight_cost_int + @plane.base_price)
+  end
+
+  def spaces_on(number, sep=" ")
+    number.round(2).to_s.tap { |s| :go while s.gsub!(/^([^.]*)(\d)(?=(\d{3})+)/, "\\1\\2#{sep}") }
   end
 end
