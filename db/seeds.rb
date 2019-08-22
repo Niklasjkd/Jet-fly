@@ -62,9 +62,11 @@ end
 
 puts 'Creating 30 fake Review...'
 
+REVIEW_CONTENT = "For my summer trip 2019, I wanted to travel to a special place, a country that only few people know about and as I knew that WizzAir is offering cheap flights to Kutaisi, Georgia, I checked the price. The flights departing from Vienna were the most cheap ones, but when my companion received the confirmation of the holiday dates, the prices increased and travelling to Vienna by train and flight together were too expensive for us. Because of that, I checked other possibilities to travel to Georgia: Those were LOT, Baltic, Belavia, Lufthansa, Ukrainian and other. However, the schedueles were quite bad or my companion did not want to fly them (safety reasons). So I strated the search flights from other airports around my home town (MUC, PRG, NUE, SZG, LNZ)"
+
 30.times do
   review = Review.new(
-    content: "#{Faker::Dessert.flavor}",
+    content: REVIEW_CONTENT,
     booking_id: Booking.all.sample.id
   )
   review.save!
