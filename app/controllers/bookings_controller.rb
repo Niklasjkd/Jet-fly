@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.permit(:destination, :plane_id, :user_id)
+    params.permit(:destination, :plane_id, :user_id, :start_date)
   end
 
 end

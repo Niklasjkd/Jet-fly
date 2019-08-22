@@ -2,7 +2,7 @@
   <div class="card-deck">
     <% @planes.each do |plane| %>
       <div class="card" style="width: 18rem;">
-        <%= link_to plane_path(plane, destination: params[:destination]) do %>
+        <%= link_to plane_path(plane, destination: params[:destination], date: params[:date]) do %>
         <%= cl_image_tag(plane.image, crop: :fill, class: "card-img-top") %>
         <% end %>
         <div class="card-body">
