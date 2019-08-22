@@ -1,20 +1,15 @@
-
-  <div class="container">
-     <div class="container d-flex flex-column justify-content-center align-items-center col-9" >
+<div class="d-flex flex-column justify-content-center align-items-center text-center mt-3 p-5">
+  <%= simple_form_for :plane, :url => planes_path, method: :post do |f| %>
+  <%= f.hidden_field :user_id, value: @user.id%>
+    <h1>Add your Jet</h1>
       <div class="form-group">
-      <div style="margin-top: 150px; color: black;">
-        <h1>Add a plane </h1>
-          <%= simple_form_for :plane, :url => planes_path, method: :post do |f| %>
-            <%= f.hidden_field :user_id, value: @user.id%>
-            <%= f.input :price_per_min %>
-            <%= f.input :base_price %>
-            <%= f.input :location %>
-            <%= f.input :description %>
-            <%= f.input :image, as: :file%>
-
-            <%= f.submit "Add", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+        <%= f.input :price_per_min, class: "form-group" %>
+          <%= f.input :base_price, class: "form-control " %>
+          <%= f.input :location, class: "form-control"%>
+          <%= f.input :description, class: "form-control"%>
+          <%= f.input :image, as: :file %>
+          <%= f.submit "Add", class: "btn btn-primary" %>
+        <% end %>
       </div>
-    </div>
-  </div>
+</div>
+
