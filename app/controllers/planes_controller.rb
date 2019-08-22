@@ -2,14 +2,27 @@ require 'json'
 require 'open-uri'
 
 class PlanesController < ApplicationController
-  before_action :set_user, only: [:index, :show]
+  before_action :set_user, only: [:index, :create, :show]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:location].present?
       @planes = Plane.where("location ILIKE ?", "%#{params[:location].split.first.gsub(/[\s,]/ ,"")}%")
+    elsif params[:owner].present?
+      @planes = Plane.where(user_id: params[:owner])
     else
       @planes = Plane.all
+    end
+  end
+
+  def create
+    @plane = Plane.new(plane_params)
+    respond_to do |format|
+      if @plane.save!
+        format.html { redirect_to planes_path(owner: plane_params[:user_id]), notice: 'Plane was successfully created.' }
+      else
+        format.html { redirect_to planes_path(owner: plane_params[:user_id]), notice: 'Error.' }
+      end
     end
   end
 
@@ -24,6 +37,10 @@ class PlanesController < ApplicationController
   end
 
   private
+
+  def plane_params
+    params.require(:plane).permit(:user_id, :price_per_min, :base_price, :location, :description, :image, :image_cache)
+  end
 
   def fetch_api(origin, destination)
     url = "https://www.distance24.org/route.json?stops=#{origin}|#{destination}"
