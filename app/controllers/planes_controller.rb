@@ -7,7 +7,7 @@ class PlanesController < ApplicationController
 
   def index
     if params[:location].present?
-      @planes = Plane.where(location: params[:location].downcase)
+      @planes = Plane.where("location ILIKE ?", "%#{params[:location].split.first.gsub(/[\s,]/ ,"")}%")
     else
       @planes = Plane.all
     end
