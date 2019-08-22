@@ -18,10 +18,14 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.booking = @booking
-    if @review.save
-      redirect_to root_path
-    else
-      render :new
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to root_path, notice: 'Review was successfully created.' }
+        format.json { render :show, status: :created, location: @review }
+      else
+        format.html { render :new }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
+      end
     end
   end
 
