@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 class PlanesController < ApplicationController
-  before_action :set_user, only: [:index, :create, :show]
+  before_action :set_user, only: [:index, :new, :create, :show]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -15,13 +15,17 @@ class PlanesController < ApplicationController
     end
   end
 
+  def new
+    @plane = Plane.new
+  end
+
   def create
     @plane = Plane.new(plane_params)
     respond_to do |format|
       if @plane.save!
         format.html { redirect_to planes_path(owner: plane_params[:user_id]), notice: 'Plane was successfully created.' }
       else
-        format.html { redirect_to planes_path(owner: plane_params[:user_id]), notice: 'Error.' }
+        render :new
       end
     end
   end
