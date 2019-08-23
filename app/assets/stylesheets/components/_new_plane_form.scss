@@ -1,0 +1,12 @@
+#new_plane_form {
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 400px;
+
+  transition-property: background;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}

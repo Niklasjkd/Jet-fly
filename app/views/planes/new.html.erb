@@ -1,15 +1,13 @@
-<div class="d-flex flex-column justify-content-center align-items-center text-center mt-3 p-5">
-  <%= simple_form_for :plane, :url => planes_path, method: :post do |f| %>
+<%= simple_form_for @plane, :url => planes_path, method: :post do |f| %>
   <%= f.hidden_field :user_id, value: @user.id%>
-    <h1>Add your Jet</h1>
-      <div class="form-group">
-        <%= f.input :price_per_min, class: "form-group" %>
+      <div class="form-group container d-flex flex-column justify-content-center align-items-center text-center mt-3 p-5" id="new_plane_form">
+        <h1>Add your Jet</h1>
+        <%= f.input :price_per_min, class: "form-control" %>
           <%= f.input :base_price, class: "form-control " %>
           <%= f.input :location, class: "form-control"%>
           <%= f.input :description, class: "form-control"%>
           <%= f.input :image, as: :file %>
-          <%= f.submit "Add", class: "btn btn-primary" %>
-        <% end %>
+          <%= f.submit "Add", class: "btn btn-primary btn-lg" %>
       </div>
-</div>
+    <% end %>
 
