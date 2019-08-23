@@ -13,25 +13,28 @@
       <% end %>
 
       <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
+                  hint: "Leave it blank if you don't want to change it",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
+                  hint: "We need your current password to confirm your changes",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
+      <%= f.input :image, as: :file,
+                  hint: "We need a profile picture",
+                  required: true,
+                  input_html: { autocomplete: "image" } %>
     </div>
 
     <div class="form-actions btn btn-primary d-flex justify-content-center align-items-center mb-3 mt-3">
-      <%= f.button :submit, "Update" %>
+      <%= f.button :submit, "Update"%>
     </div>
   <% end %>
 
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <h3>Cancel my account</h3>
 
     <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 

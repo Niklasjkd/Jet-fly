@@ -21,6 +21,10 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :image, as: :file,
+                  hint: "We need a profile picture",
+                  required: true,
+                  input_html: { autocomplete: "image" } %>
     </div>
 
     <div class="form-actions btn btn-primary d-flex justify-content-center align-items-center mb-3 mt-3">
