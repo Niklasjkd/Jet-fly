@@ -6,16 +6,16 @@
       <% else %>
        <% @date = params[:book][:default_date] %>
         <% end %>
-      <strong><%= params[:book][:location].capitalize %></strong> to <strong> <%=  params[:book][:destination].capitalize %> </strong> on <strong> <%= @date %> </strong>
+      <strong><%= params[:book][:location].capitalize %></strong> to <strong> <%=  params[:book][:destination].capitalize %> on the <%= params[:book][:default_date]%> has been confirmed</strong> on <strong> <%= @date %> </strong>
 
     </h1>
    <div>
     <p class="lead">Your new booking</p>
      <hr class="my-4">
-     <p>Your booking has been confirmed by our algorithm</p>
+     <p>In order to confirm your booking, press the button below.</p>
      <p><strong>Price for your trip:</strong> <% @price = params[:book][:base_price] %>
       <%= @price %>€</p>
-     <%= link_to "My bookings", plane_bookings_path(destination: params[:book][:destination], user_id: params[:book][:user_id], plane_id: params[:book][:plane_id], start_date: @date), method: "post",  class: "btn btn-primary btn-lg" %>
+     <%= link_to "Confirm booking", plane_bookings_path(destination: params[:book][:destination], user_id: params[:book][:user_id], plane_id: params[:book][:plane_id], start_date: @date), method: "post",  class: "btn btn-primary btn-lg" %>
    </div>
   </div>
 </div>
