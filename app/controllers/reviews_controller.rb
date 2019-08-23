@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @plane = @booking.plane
     @review = Review.new
   end
 

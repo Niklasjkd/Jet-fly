@@ -8,6 +8,7 @@
     </div>
 </div>
       <div class="plane-deck">
+    <% <div class="mt-3"> <p>You do not have any Jets listed yet.</p> if @ planes.empty</div>   %>
     <% @planes.each do |plane| %>
     <%= link_to edit_plane_path(id: plane.id, owner: params[:owner]) do %>
         <div class="card plane mb-3" style="border: 0px; border-radius: 4px;">
@@ -21,6 +22,7 @@
     <% end %>
     </div>
   <% else %>
+
   <br>
   <div class="plane-deck">
     <% @planes.each do |plane| %>
