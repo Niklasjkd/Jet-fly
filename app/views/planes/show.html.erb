@@ -49,7 +49,7 @@
 
             <%= f.input :departure_date, placeholder: params[:departure_date], input_html: {class: "datepicker"}%>
             <%= f.hidden_field :default_date, value: params[:departure_date] %>
-            <%= f.hidden_field :plane_id, value: params[:plane_id] %>
+            <%= f.hidden_field :plane_id, value: @plane.id %>
             <%= f.hidden_field :user_id, value: @user.id %>
             <%= f.hidden_field :destination, value: params[:destination] %>
             <%= f.hidden_field :location, value: @plane.location %>
