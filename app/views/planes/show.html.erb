@@ -20,7 +20,7 @@
       <h2 class="text-secondary">Flight Info</h2>
       <div class="mb-3 p-3 bg-white rounded border">
         <p><strong>Destination</strong></p>
-        <p><small><%= @plane.location %> to <span id="destination"><%=  params[:destination] %></span></small></p>
+        <p><small><%= @plane.location %> to <span id="destination"><%=  "params[:destination].split.first.gsub(/[\s,]/ ,"")}" %></span></small></p>
         <p><%= "Date: #{params[:date]}"  %></p>
       </div>
       <div class="mb-3 p-3 bg-white rounded border">
