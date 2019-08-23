@@ -1,9 +1,6 @@
 <div class="container">
-  <h1>Choose a Jet</h1>
-  <% if params[:owner].present? %>
-    <%= link_to "Add a plane", new_plane_path(owner: @user.id), class: "btn btn-primary" %>
-  <% end %>
-  <br>
+  <h1>Your Jets</h1>
+
   <div class="plane-deck">
     <% @planes.each do |plane| %>
       <%= link_to plane_path(plane, destination: params[:destination], departure_date: params[:departure_date]) do %>
@@ -17,4 +14,8 @@
       <% end %>
     <% end %>
   </div>
+    <% if params[:owner].present? %>
+    <%= link_to "Add your Jet", new_plane_path(owner: @user.id), class: "btn btn-primary" %>
+  <% end %>
+  <br>
 </div>
