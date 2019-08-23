@@ -1,9 +1,11 @@
 <div class="container">
   <div class="d-flex justify-content-between mt-3">
   <h1>Choose a Jet</h1>
+  <% if params[:owner].present? %>
     <div class="text-center">
       <%= link_to "Add a plane", new_plane_path(owner: @user.id), class: " d-block btn btn-primary btn-lg" %>
     </div>
+  <% end %>
   </div>
   <br>
   <div class="plane-deck">

@@ -44,10 +44,15 @@
     <div class="col-4">
       <!-- checkout -->
       <div class="bg-white border p-3 mt-3">
+        <% @placeholder = params[:departure_date] %>
+        <% @empty = "Enter a date" %>
         <% if user_signed_in? %>
           <%= simple_form_for :book, url: new_plane_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id], date: params[:date], location: @plane.location), method: "get" do |f| %>
-
-            <%= f.input :departure_date, placeholder: params[:departure_date], input_html: {class: "datepicker"}%>
+            <% if @placeholder.empty? %>
+              <%= f.input :departure_date, placeholder: "#{@empty}", input_html: {class: "datepicker", required: true}%>
+              <% else %>
+              <%= f.input :departure_date, placeholder: @placeholder, input_html: {class: "datepicker"}%>
+              <% end %>
             <%= f.hidden_field :default_date, value: params[:departure_date] %>
             <%= f.hidden_field :plane_id, value: @plane.id %>
             <%= f.hidden_field :user_id, value: @user.id %>
