@@ -11,7 +11,7 @@
     </h1>
     <p class="lead">New Booking</p>
     <hr class="my-4">
-    <p>Your flight from <%= params[:book][:location].capitalize %> to <%=  params[:book][:destination].capitalize %> on the  </p>
+    <p>Your flight from <%= params[:book][:location].capitalize %> to <%=  params[:book][:destination].capitalize %> on the <%= params[:book][:departure_date]%>.  </p>
     <%= link_to "Confirm", plane_bookings_path(destination: params[:book][:destination], user_id: params[:book][:user_id], plane_id: params[:book][:plane_id], start_date: @date), method: "post",  class: "btn btn-primary btn-lg" %>
   </div>
 </div>
