@@ -23,13 +23,13 @@ body {
             } do |form| %>
             <div class="search-form-control form-group" >
                 <div class="col-lg-3 col-md-3 col-sm-12">
-                    <%= form.text_field :location, placeholder: "From", class: "form-control search-slt" %>
+                    <%= form.text_field :location, required: true, placeholder: "From", class: "form-control search-slt" %>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12">
-                    <%= form.text_field :destination, placeholder: "To", class: "form-control search-slt"%>
+                    <%= form.text_field :destination, required: true, placeholder: "To", class: "form-control search-slt"%>
                 </div>
                 <div class= "col-lg-3 col-md-3 col-sm-12">
-                  <%= form.text_field :departure_date, placeholder: "Departure", class: "datepicker form-control bg-white" %>
+                  <%= form.text_field :departure_date, required: false, placeholder: "Departure", class: "datepicker form-control bg-white" %>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12">
                     <%= form.submit "Find", class: "btn btn-primary", id: "button" %>

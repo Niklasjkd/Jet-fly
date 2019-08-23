@@ -6,19 +6,31 @@
     <% else %>
       <div class="book-deck card-deck">
         <% @bookings.each do |booking| %>
-          <div class="card">
-            <h5 class="card-header"> <%= booking.plane.description%></h5>
+        <div class="card">
+          <% if booking.start_date < Date.today %>
+              <h5 class="card-header"> <%= booking.plane.description%></h5>
               <div class="card-body d-flex">
-                <div class="card-text flex-grow-1">
+                <div class="card-text">
                   <h5 class="card-title"> <%= booking.destination.capitalize %> to <%= booking.plane.location.capitalize %></h5>
-                  <p class="card-text text-secondary">On <%= booking.start_date %></p>
-                  <%= link_to "Delete Booking", plane_booking_path(params[:plane_id], booking.id), method: :delete,  class: "btn btn-danger" %>
+                  <p class="card-text text-secondary">Your flight was on <%= booking.start_date %></p>
+                  <%= link_to "Cancel Booking", plane_booking_path(params[:plane_id], booking.id), method: :delete,  class: "btn btn-danger " %>
+                  <%= link_to "Create a review", new_plane_booking_review_path(params[:plane_id], booking.id) ,  class: "btn btn-danger", style: "margin-top: 10px"%>
                 </div>
-                <%= cl_image_tag(booking.plane.image, crop: :fill, class: "rounded", style: "width: 300px;") %>
+                  <%= cl_image_tag(booking.plane.image, crop: :fill, class: "rounded", style: "width: 300px;") %>
+                </div>
               </div>
-          </div>
+            <% else %>
+              <h5 class="card-header"> <%= booking.plane.description%></h5>
+                <div class="card-body d-flex">
+                  <div class="card-text">
+                    <h5 class="card-title"> <%= booking.destination.capitalize %> to <%= booking.plane.location.capitalize %></h5>
+                    <p class="card-text text-secondary">Your flight is on <%=  booking.start_date %></p>
+                    <%= link_to "Cancel Booking", plane_booking_path(params[:plane_id], booking.id), method: :delete,  class: "btn btn-danger" %>
+                  </div>
+                  <%= cl_image_tag(booking.plane.image, crop: :fill, class: "rounded", style: "width: 300px;") %>
+                </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
 </div>
-
