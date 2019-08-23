@@ -24,14 +24,21 @@ puts 'Creating 10 fake Users...'
   user.save!
 end
 
+  user = User.new(
+    email: "test@example.com",
+    full_name: "#{Faker::Name.name}",
+    password: "123456"
+  )
+  user.save!
+
 puts 'Creating 15 fake Planes...'
 
-GERMANY_CITIES = ['berlin', 'hamburg', 'frankfurt']
+GERMANY_CITIES = ['Berlin', 'Hamburg', 'Frankfurt']
 GERMANY_COORDINATES = [{ lat: 52.5649, long: 13.29729999999995 }, { lat: 53.6326, long: 10.006700000000023 }, { lat: 50.1106444, long: 8.6820917 }]
 PLANE_IMAGES = ["private-jet1_quqsy5", "Private-Jet-Charter-Priority-One-Jets-e1464293444844_wyxjiq", "Challenger-604_sx9fsu", "photo-1522474252234-127492dde7f4_hr2a2a", "photo-1552181528-ff71ab6bbbc5_x9o2px", "photo-1530487621680-ebe8c8bf6c83_ues7js", "photo-1551018154-87e31c03e566_mq5dot", "photo-1540962351504-03099e0a754b_muslf5", "maxresdefault_heg67t", "dassault_fcyqby", "bbj2-ext_gg1ejn"]
 PLANE_DESCRIPTIONS = ["Global ", "Falcon 7X ", "Gulfstream G600 ", "Falcon 8X ", "Gulfstream G550 ", "Global 6000", "Gulfstream G650ER ", "Global 7500", "Bombardier Challenger 600", "Dassault Falcon 2000", "Dassault Falcon 900", "Embraer Legacy 600/650", "Bombardier Challenger 300/350", "Cessna Citation Sovereign", "Cessna Citation X", "Dassault Falcon 50", "Gulfstream G200/G250", "Hawker 4000"]
 
-15.times do
+50.times do
   location_index = rand(0...GERMANY_CITIES.size)
   current_coordinates = GERMANY_COORDINATES[location_index]
 
