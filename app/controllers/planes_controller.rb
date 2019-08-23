@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 class PlanesController < ApplicationController
-  before_action :set_user, only: [:index, :new, :create, :show]
+  before_action :set_user, only: [:index, :edit, :new, :create, :show]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -30,6 +30,23 @@ class PlanesController < ApplicationController
         format.json { render json: @role.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def edit
+    @plane = Plane.find(params[:id])
+  end
+
+  def update
+    redirect_to planes_path(owner: params[:plane][:owner])
+    # @plane = Plane.find(params[:id])
+    # @plane.update(plane_params)
+    # if @plane.save
+    #   format.html { redirect_to planes_path(owner: params[:plane][:owner]), notice: 'Plane was successfully created.' }
+    #   format.json { render :show, status: :created, location: @plane }
+    # else
+    #   format.html { render :new }
+    #   format.json { render json: @role.errors, status: :unprocessable_entity }
+    # end
   end
 
   def show

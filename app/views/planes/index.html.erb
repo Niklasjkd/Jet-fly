@@ -1,12 +1,26 @@
+
+<% if params[:owner].present? %>
 <div class="container">
   <div class="d-flex justify-content-between mt-3">
   <h1>Choose a Jet</h1>
-  <% if params[:owner].present? %>
     <div class="text-center">
       <%= link_to "Add a plane", new_plane_path(owner: @user.id), class: " d-block btn btn-primary btn-lg" %>
     </div>
-  <% end %>
-  </div>
+</div>
+      <div class="plane-deck">
+    <% @planes.each do |plane| %>
+    <%= link_to edit_plane_path(id: plane.id, owner: params[:owner]) do %>
+        <div class="card plane mb-3" style="border: 0px; border-radius: 4px;">
+          <%= cl_image_tag(plane.image, crop: :fill, class: "w-100") %>
+          <div class="card-body w-100 text-body">
+            <h5 class="card-title"> <%= plane.description %> </h5>
+            <p class="card-text"><small class="text-muted"><%= plane.location %> to <%= params[:destination] %></small></p>
+          </div>
+        </div>
+    <% end %>
+    <% end %>
+    </div>
+  <% else %>
   <br>
   <div class="plane-deck">
     <% @planes.each do |plane| %>
@@ -19,6 +33,7 @@
           </div>
         </div>
       <% end %>
+    <% end %>
     <% end %>
   </div>
 </div>
