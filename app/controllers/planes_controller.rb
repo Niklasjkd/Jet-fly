@@ -53,7 +53,7 @@ class PlanesController < ApplicationController
   end
 
   def fetch_api(origin, destination)
-    url = "https://www.distance24.org/route.json?stops=#{origin}|#{destination}"
+    url = "https://www.distance24.org/route.json?stops=#{origin}|#{gsub_false_characters(destination)}"
     data_serialized = open(url).read
     data = JSON.parse(data_serialized)
     calc_time_and_cost(data["distance"])
@@ -74,12 +74,16 @@ class PlanesController < ApplicationController
   end
 
   def fetch_coordinates(location)
-    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{location}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
+    url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{gsub_false_characters(location)}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
     data_serialized = open(url).read
     data = JSON.parse(data_serialized)
     {
       lat: data["features"][0]["geometry"]["coordinates"][1],
       lng: data["features"][0]["geometry"]["coordinates"][0]
     }
+  end
+
+  def gsub_false_characters(word)
+    word.gsub(/ä/, 'ae').gsub(/ö/, 'oe').gsub(/ü/, 'ue')
   end
 end
