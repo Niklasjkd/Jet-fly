@@ -33,15 +33,15 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  # def update
-  #   @review.update(review_params)
-  #   redirect_to edit_review_registration_path(@review)
-  # end
+  def update
+    @review.update(review_params)
+    redirect_to edit_review_registration_path(@review)
+  end
 
-  # def destroy
-  #   @review.destroy
-  #   redirect_to reviews_path
-  # end
+  def destroy
+    @review.destroy
+    redirect_to reviews_path
+  end
 
   private
 
