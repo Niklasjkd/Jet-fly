@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:full_name, :image])
   end
 
-  def after_sign_in_path_for(resource)
-    "/planes"
-  end
-
   private
 
   def set_user
