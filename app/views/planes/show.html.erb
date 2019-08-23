@@ -63,6 +63,7 @@
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :destination, value: params[:destination] %>
         <%= f.hidden_field :location, value: @plane.location %>
+        <%= f.hidden_field :base_price, value: @flight_cost %>
         <%= f.button :submit, "Book", class: "btn btn-primary w-100" %>
         <% end %>
 

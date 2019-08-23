@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="jumbotron mt-5 rounded" style="box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+  <div class="jumbotron mt-5" style="box-shadow: 5px 5px 30px rgba(0,0,0,0.2); background-color: white; border-radius: 30px; ">
     <h1 class="display-4">
       <% unless params[:book][:departure_date].empty?%>
       <% @date = params[:book][:departure_date] %>
@@ -9,9 +9,13 @@
       <strong><%= params[:book][:location].capitalize %></strong> to <strong> <%=  params[:book][:destination].capitalize %> </strong> on <strong> <%= @date %> </strong>
 
     </h1>
-    <p class="lead">New Booking</p>
-    <hr class="my-4">
-    <p>Your booking has been fucking confirmed</p>
-    <%= link_to "My bookings", plane_bookings_path(destination: params[:book][:destination], user_id: params[:book][:user_id], plane_id: params[:book][:plane_id], start_date: @date), method: "post",  class: "btn btn-primary btn-lg" %>
+   <div>
+    <p class="lead">Your new booking</p>
+     <hr class="my-4">
+     <p>Your booking has been confirmed by our algorithm</p>
+     <p><strong>Price for your trip:</strong> <% @price = params[:book][:base_price] %>
+      <%= @price %>€</p>
+     <%= link_to "My bookings", plane_bookings_path(destination: params[:book][:destination], user_id: params[:book][:user_id], plane_id: params[:book][:plane_id], start_date: @date), method: "post",  class: "btn btn-primary btn-lg" %>
+   </div>
   </div>
 </div>
