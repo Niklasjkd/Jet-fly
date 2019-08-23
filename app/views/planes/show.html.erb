@@ -50,7 +50,9 @@
       <!-- checkout -->
       <div class="bg-white border p-3 mt-3">
         <% if user_signed_in? %>
-        <%= simple_form_for :book, url: new_plane_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id], date: params[:date], location: @plane.location), method: "get" do |f| %>
+        <% @placeholder = params[:departure_date] %>
+        <% @empty = "Enter date" %>
+        <%= simple_form_for :book, url: new_plane_booking_path(destination: params[:destination], user_id: @user.id, plane_id: params[:id], date: params[:departure_date], location: @plane.location), method: "get" do |f| %>
         <% if @placeholder.empty? %>
         <%= f.input :departure_date, placeholder: "#{@empty}", input_html: {class: "datepicker", required: true}%>
         <% else %>
